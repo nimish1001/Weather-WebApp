@@ -6,11 +6,11 @@ const forecast = (latitude,longitude,callback) =>{
 
     request({url:url,json:true}, (error,response)=>{
         if(error){
-            console.log('Unable to connect the server!',undefined)
+            callback('Unable to connect the server!',undefined)
         }else if(response.body.error){
-            console.log('Location not found',undefined)
+            callback('Location not found',undefined)
         }else{
-            console.log(undefined,response.body.daily.data[0].summary +' There is currently '+response.body.currently.temperature+' degrees out there. There is '+response.body.currently.precipProbability+' % chance of rain.')
+            callback(undefined,response.body.daily.data[0].summary +' There is currently '+response.body.currently.temperature+' degrees out there. There is '+response.body.currently.precipProbability+' % chance of rain.')
         }
     })
 }
